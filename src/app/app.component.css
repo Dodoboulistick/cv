@@ -8,16 +8,12 @@
     margin-bottom: 65px;
 }
 
-section:before {
-    height: 54px;
-    content: "";
-    display:block;
-}
+
 
 /*  NAVBAR  */
-nav{
-    background-color: #f2f2f2;
-}
+/* nav{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; 
+} */
 nav a{
   position: relative;
 }
@@ -45,8 +41,11 @@ nav a:hover:after {
 
 
 
+
+
 /*   ABOUT    */
 #about{
+    padding-top:40px;
     height: 90vh;
     position: relative;
 }
@@ -54,16 +53,16 @@ nav a:hover:after {
     position: relative;
     width: fit-content;
     display: block;
-    margin-left: 15%;
+    margin-left: 5%;
 }
 
 #about img{
-    width: 60vh;
+    width: 75vh;
 }
 
 #about .about-title-wrapper{
     position: absolute;
-    left: 370px;
+    left: 400px;
     bottom: -70px;
     max-width: 100%;
 }
@@ -77,14 +76,53 @@ nav a:hover:after {
 #about h1 .mailhe{
     display: block;
     padding-left: 40px;
-    color: #3366FF;
+    color: #fff;
+    text-shadow: 2px 2px 4px black;
 }
 
-#about .button-group{
+#about figure{
     position: absolute;
-    bottom : 5vh;
-    width: 100%;
+    background-color: #f7f7f7;
+    bottom : 400px;
+    left: 180px;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
+
+
+
+
 
 
 /* SKILLS */
+#skills{
+    background-color: #f7f7f7;
+    padding-bottom: 40px;
+}
+#skills .heading img{
+    width: 50px;
+    margin-right:13px;
+}
+
+#skills img.chevron{
+    width: 20px;
+    margin-right:8px;
+}
+
+#skills h3{
+    display: inline-block;
+}
+
+#skills ul li{
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+#skills i{
+    font-weight: bold;
+    font-size: 16px;
+    color: #3366FF;
+}
