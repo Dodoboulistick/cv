@@ -45,4 +45,4 @@ testem.log
 Thumbs.db
 
 #config files
-*.config.json
+/src/assets/smtp.config.json
