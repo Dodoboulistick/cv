@@ -1,50 +1,86 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ExperienceService } from '../services/experience.service';
+import { SkillsService } from '../services/skills.service';
+import { FormsModule } from '@angular/forms';
+import { FormService } from '../services/form.service';
+declare let AOS: any;
+declare var $: any;
+
+
 @Component({
   selector: 'app-content',
   templateUrl: 'views/content.component.html',
   styleUrls: ['../app.component.css']
 })
-export class ContentComponent {
-  title = 'angular-cv';
 
-  public constructor(){
+
+export class ContentComponent implements OnInit {
+
+  title = 'angular-cv';
+  skills: any = JSON.parse(JSON.stringify(this.skillsService.mySkills));
+  experiences: any = JSON.parse(JSON.stringify(this.experienceService.myExperiences));
+  experienceDescription: string = "";
+
+  public constructor(public skillsService: SkillsService, public experienceService: ExperienceService, public formService: FormService) {
   }
 
-  skills : any = [
-    {
-      title_1 : { img : "/assets/img/logo-html.png", name : "DOM" },
-      title_2 : { img : "/assets/img/logo-js.png", name : "Javascript" },
-      data_1 : [
-        { lang : "HTML", skill : "90%"}, 
-        { lang : "CSS", skill : "85%"}, 
-        { lang : "Bootstrap", skill : "80%"}, 
-        { lang : "Material Design", skill : "60%"}
-      ],
-      data_2 : [
-        { lang : "Javascript", skill : "80%"}, 
-        { lang : "Angular", skill : "70%"}, 
-        { lang : "React", skill : "50%"}, 
-        { lang : "jQuery", skill : "60%"}, 
-        { lang : "ExpressJS/Sequelize", skill : "65%"}
-      ]
-    },
-    {
-      title_1 : { img : "/assets/img/logo-php.png", name : "PHP/SQL" },
-      title_2 : { img : "/assets/img/logo-photoshop.png", name : "Design et CMS" },
-      data_1 : [
-        { lang : "PHP", skill : "80%"}, 
-        { lang : "Laravel", skill : "70%"}, 
-        { lang : "MySQL/PostreSQL", skill : "90%"}
-      ],
-      data_2 : [
-        { lang : "Photoshop", skill : "90%"}, 
-        { lang : "Premiere Pro", skill : "50%"}, 
-        { lang : "Wordpress", skill : "85%"}
-      ]
-    }
-  ];
+  ngOnInit(): void {
+    AOS.init();
+    $(".education-block").click(function () {
+      $('.toast').toast('show');
+    })
+  }
 
-  
+  @HostListener('window:scroll', ['$event'])
+  public reachSkills() {
+    const skillYPos = this.getPos(document.querySelector("#skill-progress-bars")).y - 600;
+    var scrollY = pageYOffset;
+    let skill: any = []; for (var i = 0; i < this.skills.length; i++) {
+      for (var j = 0; j < this.skills[i].data.length; j++) {
+        skill[j] = this.skills[i].data[j].skill;
+        this.skills[i].data[j].skill = (scrollY < skillYPos || skillYPos < 0) ? "0%" : this.skillsService.mySkills[i].data[j].skill;
+      }
+    }
+  }
+
+
+  public getPos(el: any) {
+    for (var lx = 0, ly = 0;
+      el != null;
+      lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+    return { x: lx, y: ly };
+  }
+
+
+  public selectCard(event: any) {
+    this.experiences.forEach((element: { activated: boolean; }) => {
+      element.activated = false;
+    });
+    event.activated = true;
+    this.experienceDescription = event.longdescription;
+  }
+
+  public displayArrow(event: any){
+    let element = event.target.childNodes[0].childNodes[2];
+    element.classList.remove("cache");
+  }
+
+  public hideArrow(event: any){
+    let element = event.target.childNodes[0].childNodes[2];
+    element.classList.add("cache");
+  }
+
+  public redirectTo(url : string){
+    window.open(url, '_blank'); 
+  }
+
+  public animateLinks(event: any){
+    event.target.classList.add("jello");
+  }
+
+  public unanimateLinks(event: any){
+    event.target.classList.remove("jello");
+  }
 
 }
 

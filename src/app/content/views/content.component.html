@@ -1,215 +1,332 @@
-  <section class="mt-5" id="about">
-    <div class="container">
-      <div class="about-img-wrapper">
-        <img src="../../../assets/img/me.png">
-        <div class="about-title-wrapper">
-          <h1 class="text-uppercase fst-italic">Dorian<br><span class="mailhe">Mailhé</span></h1>
-          <figure class="text-center">
-            <blockquote class="blockquote">
-              <p>Je fais sa pour le fric wsh</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-              Dorian Mailhé <cite title="Source Title">cacestsur.com</cite>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
+ <div class="main" (scroll)="reachSkills()">
+   <section class="mt-5" id="about">
+     <div class="container">
+       <div class="about-img-wrapper">
+         <img src="../../../assets/img/me.png">
+         <div class="about-title-wrapper">
+           <h1 data-aos="fade-up" data-aos-duration="1000" class="text-uppercase fst-italic">Dorian<br><span
+               class="mailhe">Mailhé</span></h1>
+           <figure data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" class="text-center">
+             <blockquote class="blockquote">
+               <p>Jeune étudiant motivé cherchant un stage de 4 mois dans le développement web aux Etats-Unis.</p>
+             </blockquote>
+             <figcaption class="blockquote-footer">
+               <cite title="Source Title">Avril-Août 2022</cite>
+             </figcaption>
+           </figure>
+         </div>
+       </div>
+     </div>
+   </section>
 
 
 
-  <section id="skills">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
-      <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#dddddd"></path>
-    </svg>
-    <div class="container pt-5">
-      <div class="row">
-        <div class="col-md-6">
-          <h2 class="text-uppercase text-center mb-3 mt-5">compétences</h2>
-        </div>
-        <div class="col-md-6"></div>
-      </div>
-      <div *ngFor="let skill of skills" class="row mb-5">
-        <div class="col-md-6 skill-pills">
-          <div class="heading mb-4">
-            <img src="{{ skill.title_1.img }}">
-            <h3 class="align-middle ml-5">{{ skill.title_1.name }}</h3>
-          </div>
-          <ul>
-            <li *ngFor="let s of skill.data_1">
-              <div class="row">
-                <div class="col-4">{{ s.lang }}</div>
-                <div class="col-4 mt-2">
-                  <div class="progress mt-1" style="height: 2px;">
-                    <div class="progress-bar bg-dark" role="progressbar" [ngStyle]="{'width': s.skill}" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>              
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <div class="heading mb-4">
-            <img src="{{ skill.title_2.img }}">
-            <h3 class="align-middle ml-5">{{ skill.title_2.name }}</h3>
-          </div>
-          <ul>
-            <li *ngFor="let s of skill.data_2">
-              <div class="row">
-                <div class="col-4">{{ s.lang }}</div>
-                <div class="col-4 mt-2">
-                  <div class="progress mt-1" style="height: 2px;">
-                    <div class="progress-bar bg-dark" role="progressbar" [ngStyle]="{'width': s.skill}" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                </div>
+   <section id="skills">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#dddddd"></path>
+     </svg>
+     <div class="container skill-content">
+       <div class="row">
+         <div class="col-xl-5 pb-5 d-flex align-items-center">
+           <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
+             <h2 class="text-uppercase fst-italic mb-3 mt-3">compétences</h2>
+             <p>J'ai pour le développement web un grand intérêt depuis plusieurs années, que j'ai cultivé par de
+               nombreuses
+               formations en ligne (OpenClassroom, Udemy, apprendre-a-coder, etc). Maintenant étudiant en école
+               d'ingénieur
+               informatique, j'aimerais entrer dans le monde professionnel et ainsi faire de ma passion un métier.</p>
+           </div>
+         </div>
+         <div class="col-xl-7">
+           <div *ngFor="let skill of skills" class="row mb-5">
+             <div class="col-md-4 offset-1 d-flex align-items-center">
+               <div class="heading mb-4">
+                 <img src="{{ skill.title.img }}">
+                 <h3 class="align-middle ml-5 fw-bold">{{ skill.title.name }}</h3>
+               </div>
+             </div>
+             <div class="col-md-7" id="skill-progress-bars">
+               <ul>
+                 <li *ngFor="let s of skill.data">
+                   <div class="row d-flex justify-content-center">
+                     <div class="col-4">{{ s.lang }}</div>
+                     <div class="col-6 offset-1 mt-2">
+                       <div class="progress mt-1" style="height: 2px;">
+                         <div class="progress-bar" role="progressbar"
+                           [ngStyle]="{'width': s.skill, 'background-color': s.color}" aria-valuemin="0"
+                           aria-valuemax="100"></div>
+                       </div>
+                     </div>
+                   </div>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+
+   <section id="experience">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#fff"></path>
+     </svg>
+     <div class="container experience-content">
+       <div class="row">
+         <div class="col-xl-7">
+           <ul class="experiences-list">
+             <li *ngFor="let exp of experiences" data-aos="fade-up" data-aos-duration="1000" (click)="selectCard(exp)">
+               <img class="{{ exp.activated? 'activated-img' : '' }}" src="{{ exp.logo }}">
+               <div class="exp  {{ exp.activated? 'activated' : '' }}">
+                 <div class="exp-content">
+                   <h3 class="mt-3">{{ exp.company }}</h3>
+                   <p class="fst-italic fw-light color-secondary">{{ exp.duration }}</p>
+                   <p>{{ exp.shortdescription }}</p>
+                 </div>
+               </div>
+             </li>
+           </ul>
+         </div>
+         <div class="col-xl-4 offset-xl-1 pb-5 d-flex align-items-center">
+           <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
+             <h2 class="text-uppercase fst-italic mb-3 mt-3">expérience</h2>
+             <p>{{ experienceDescription ? experienceDescription : "J'ai pour le développement web un grand intérêt depuis plusieurs années, que j'ai cultivé par de
+              nombreuses
+              formations en ligne (OpenClassroom, Udemy, apprendre-a-coder, etc). Maintenant étudiant en école
+              d'ingénieur
+              informatique, j'aimerais entrer dans le monde professionnel et ainsi faire de ma passion un métier." }}
+             </p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+
+
+   <section id="education">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#dddddd"></path>
+     </svg>
+     <div class="container">
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">éducation</h2>
+       <div class="row">
+         <div class="col-md-6 d-flex justify-content-center">
+           <div class="education-block text-center center" data-aos="fade-right">
+             <h5 class="text-muted">2018-2020</h5>
+             <i class="bi bi-book-fill"></i>
+             <h3 class="fw-bold">Lycée Pierre de Fermat</h3>
+             <h4>Classe préparatoire</h4>
+             <div class="black-divider"></div>
+             <p>Après un bac S spécialité Mathématiques</p>
+             <p>Physique Chimie (PC)</p>
+           </div>
+         </div>
+         <div class="col-md-6  d-flex justify-content-center">
+           <div class="education-block text-center center" data-aos="fade-left">
+             <h5 class="text-muted">2020-2023</h5>
+             <i class="bi bi-cpu-fill"></i>
+             <h3 class="fw-bold">CY Tech Pau (ex-EISTI)</h3>
+             <h4>Ecole d'ingénieur</h4>
+             <div class="black-divider"></div>
+             <p>Spécalisée en informatique</p>
+             <p class="font-italic">(en cours)</p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+       <div class="toast-header">
+         <img src="../../../assets/img/me-toast.png" class="rounded me-2" alt="Dorian Mailhé">
+         <strong class="me-auto">Dorian Mailhé</strong>
+         <small>A l'instant</small>
+         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+       </div>
+       <div class="toast-body">
+         Désolé, il n'y a aucune fonctionnalité au clic, je trouvais juste l'effet sympa !
+       </div>
+     </div>
+   </div>
+
+   <section id="portfolio">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#fff"></path>
+     </svg>
+     <div class="container">
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">Portfolio</h2>
+       <div class="row">
+         <div class="col-md-4">
+           <div class="card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+             (click)="redirectTo('http://projetdemocratia.herokuapp.com/')">
+             <div class="card-content">
+               <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top" alt="...">
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Projet Democratia</h5>
+                 <p class="card-text">Site de présentation de l'association Projet Democratia et son blog attitré.</p>
+               </div>
+               <div class="card-link cache">
+                 <i class="bi bi-arrow-right"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4">
+           <div class="card second-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           (click)="redirectTo('http://dodobwebsite.fr/audiodream')">
+             <div class="card-content">
+               <img src="../../../assets/img/audiodream.png" class="card-img-top" alt="...">
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">AudioDream</h5>
+                 <p class="card-text">Site e-commerce de projet d'étude (rendu non fonctionnel pour des raisons de
+                   sécurité).</p>
+               </div>
+               <div class="card-link cache">
+                 <i class="bi bi-arrow-right"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4">
+           <div class="card third-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           (click)="redirectTo('http://dodobwebsite.fr/capitales')">
+             <div class="card-content">
+              <img src="../../../assets/img/capitalgame.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Jeu des capitales</h5>
+                <p class="card-text">Application web pour apprendre les capitales sous forme de jeu.</p>
               </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="experience">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
-      <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#f7f7f7"></path>
-    </svg>
-    <div class="container">
-      <h2 class="text-uppercase text-center mb-3 mt-5">expérience</h2>
-      <div class="blue-divider"></div>
-      <div class="total">
-        <img src="../../../assets/img/total-favicon.png">
-        <h3>TotalEnergies</h3>
-        <p>Stage de 4 mois chez Total (devenu TotalEnergies).</p>
-        <p>Développement d'outils géophysiques avec Angular, ainsi qu'un espace membre avec Expressjs/Sequelize.</p>
-      </div>
-      <div class="projetdemocratia">
-        <img src="../../../assets/img/projetdemocratia-favicon.png">
-        <h3>Projet Democratia</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <p>Aliquam quis elit nibh. Quisque pretium tortor ac ipsum ornare auctor. Pellentesque in consequat eros. Ut
-          facilisis imperdiet mi, vel luctus ante porta ac</p>
-      </div>
-      <div class="devweb">
-        <img src="../../../assets/img/freelance-favicon.png">
-        <h3>Développeur web freelance</h3>
-        <p>Recherche de missions en tant que développeur web junior en freelance.</p>
-        <p>Travail sur plusieurs projets de sites pour des particuliers.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="container">
-    <section id="education">
-      <h2 class="text-uppercase text-center mb-3">éducation</h2>
-      <div class="blue-divider"></div>
-      <div class="col-md-6">
-        <div class="education-block">
-          <h5>2018-2020</h5>
-          <span class="fas fa-graduation-cap"></span>
-          <h3>Lycée Pierre de Fermat</h3>
-          <h4>Classe préparatoire</h4>
-          <div class="red-divider"></div>
-          <p>Après un bac S spécialité Mathématiques</p>
-          <p>Physique Chimie (PC)</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="education-block">
-          <h5>2020</h5>
-          <span class="fas fa-graduation-cap"></span>
-          <h3>CY Tech Pau (ex-EISTI)</h3>
-          <h4>Ecole d'ingénieur</h4>
-          <div class="red-divider"></div>
-          <p>Spécalisée en informatique</p>
-          <p class="font-italic">(en cours)</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <h2 class="text-uppercase text-center mb-3">Portfolio</h2>
-      <div class="blue-divider"></div>
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <p>Ceci est mon texte 1</p>
-          </div>
-          <div class="carousel-item">
-            <p>Ceci est mon texte 2</p>
-          </div>
-          <div class="carousel-item">
-            <p>Ceci est mon texte 3</p>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2 class="text-uppercase text-center mb-3">Contact</h2>
-      <div class="blue-divider"></div>
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <div class="form-group">
-            <form id="contact-form" method="post" action="" role="form">
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="firstname">Prénom *</label>
-                  <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom"
-                    value="">
-                </div>
-                <div class="col-md-6">
-                  <label for="name">Nom *</label>
-                  <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" value="">
-                </div>
-                <div class="col-md-6">
-                  <label for="email">Email *</label>
-                  <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" value="">
-                </div>
-                <div class="col-md-6">
-                  <label for="phone">Téléphone</label>
-                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone"
-                    value="">
-                </div>
-                <div class="col-md-12">
-                  <label for="message">Message *</label>
-                  <textarea type="text" id="message" name="message" class="form-control" placeholder="Votre message"
-                    rows="4" value=""></textarea>
-                </div>
-                <div class="col-md-12">
-                  <p><strong>* Ces informations sont requises.</strong></p>
-                </div>
-                <div class="col-md-12">
-                  <input type="submit" class="btn btn-lg btn-outline-primary" value="Envoyer">
-                </div>
+              <div class="card-link cache">
+                <i class="bi bi-arrow-right"></i>
               </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-md-4">
+           <div class="card fourth-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           (click)="redirectTo('https://www.i-rewood.com/')">
+             <div class="card-content">
+               <img src="../../../assets/img/irewood.png" class="card-img-top" alt="...">
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">I-Rewood</h5>
+                 <p class="card-text">Site e-commerce de vente d'objets en bois de seconde main.</p>
+               </div>
+               <div class="card-link cache">
+                 <i class="bi bi-arrow-right"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4">
+           <div class="card fifth-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           (click)="redirectTo('http://paupyrus.eistibde.fr/')">
+             <div class="card-content">
+              <img src="../../../assets/img/paupyrus.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Paupyrus</h5>
+                <p class="card-text">Site de campagne de la liste Paupyrus pour le BDE de CY Tech.</p>
+              </div>
+              <div class="card-link cache">
+                <i class="bi bi-arrow-right"></i>
+              </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-4">
+           <div class="card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           (click)="redirectTo('http://dodobwebsite.fr/')">
+             <div class="card-content">
+               <img src="../../../assets/img/background.png" class="card-img-top" alt="...">
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Dodobwebsite</h5>
+                 <p class="card-text">Site et blog personnel, qui contient toutes mes productions depuis 2015.</p>
+               </div>
+               <div class="card-link cache">
+                 <i class="bi bi-arrow-right"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
 
-  </div>
+   <section id="links">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#dddddd"></path>
+     </svg>
+     <div class="container">
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">liens utiles</h2>
+       <div class="row all-links">
+         <div class="col-md-4 d-flex justify-content-center">
+           <a href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated" src="../../../assets/img/linkedin.png"></a>
+         </div>
+         <div class="col-md-4  d-flex justify-content-center">
+          <a href="https://github.com/Dodoboulistick" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="bigger animated" src="../../../assets/img/github-logo.png"></a>
+         </div>
+         <div class="col-md-4  d-flex justify-content-center">
+          <a href="http://dodobwebsite.fr" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="rounded animated" src="../../../assets/img/favicon-dodobwebsite.png"></a>
+        </div>
+       </div>
+     </div>
+   </section>
+
+   <section id="contact">
+     <div class="container contact-card">
+       <h2 class="text-uppercase text-center fst-italic mb-3">Contact</h2>
+       <div class="row">
+         <div class="col-lg-10 offset-lg-1">
+           <div class="form-group">
+             <form #contactForm="ngForm" (ngSubmit)="formService.onSubmit()" role="form">
+               <div class="row">
+                 <div class="col-md-6">
+                   <label for="firstname">Prénom *</label>
+                   <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom"
+                     [(ngModel)]="formService.firstname">
+                   <p class="form-error">{{ formService?.firstnameError }}</p>
+                 </div>
+                 <div class="col-md-6">
+                   <label for="name">Nom *</label>
+                   <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom"
+                     [(ngModel)]="formService.name">
+                   <p class="form-error">{{ formService?.nameError }}</p>
+                 </div>
+                 <div class="col-md-6">
+                   <label for="email">Email *</label>
+                   <input type="email" id="email" name="email" class="form-control" placeholder="Votre email"
+                     [(ngModel)]="formService.email">
+                   <p class="form-error">{{ formService?.emailError }}</p>
+                 </div>
+                 <div class="col-md-6">
+                   <label for="phone">Téléphone</label>
+                   <input type="tel" id="phone" name="phone" class="form-control"
+                     placeholder="Votre numéro de téléphone" [(ngModel)]="formService.phone">
+                 </div>
+                 <div class="col-md-12">
+                   <label for="message">Message *</label>
+                   <textarea type="text" id="message" name="message" class="form-control" placeholder="Votre message"
+                     rows="4" [(ngModel)]="formService.message"></textarea>
+                   <p class="form-error">{{ formService?.messageError }}</p>
+                 </div>
+                 <div class="col-md-12">
+                   <p><strong>* Ces informations sont requises.</strong></p>
+                 </div>
+                 <p class="form-success">{{ formService?.formSuccess }}</p>
+                 <div class="col-md-12">
+                   <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto" value="Envoyer">
+                 </div>
+               </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+
+
+ </div>
