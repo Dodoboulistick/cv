@@ -55,7 +55,7 @@ export class FormService {
     public onSubmit() {
         this.resetInputs();
         this.verifyInputs();
-        let CONFIG = require('../../assets/smtp.config.json');
+        let CONFIG = require('../../../config.json');
         if (this.verifyInputs()) {
             Email.send({
                 SecureToken: CONFIG.SecureToken,
