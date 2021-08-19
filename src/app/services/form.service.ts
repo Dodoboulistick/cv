@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { data } from 'jquery';
 declare let Email: any;
 
 @Injectable({
@@ -55,13 +54,10 @@ export class FormService {
     public onSubmit() {
         this.resetInputs();
         this.verifyInputs();
-        let CONFIG = require('../../../config.json');
+        let CONFIG = require('../../../smtp.config.json');
         if (this.verifyInputs()) {
             Email.send({
                 SecureToken: CONFIG.SecureToken,
-                Host: CONFIG.Host,
-                Username: CONFIG.Username,
-                Password: CONFIG.Password,
                 To: "dorian.mailhe@gmail.com",
                 From: "contact@dodobwebsite.fr",
                 Subject: "Un nouveau message sur CV",

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemeService } from '../services/theme.service';
+import { SwitchService } from '../services/switch.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-cv';
+
+  public constructor(public themeService: ThemeService, public switchService: SwitchService){}
 }

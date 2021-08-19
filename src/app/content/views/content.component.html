@@ -1,12 +1,12 @@
- <div class="main" (scroll)="reachSkills()">
-   <section class="mt-5" id="about">
+ <div class="main" (scroll)="reachSkills()" [ngStyle]="{'color':themeService.darkColor,'background-color':themeService.lightColor}">
+   <section [ngStyle]="{'background-color':themeService.greyColor}" class="mt-5" id="about">
      <div class="container">
        <div class="about-img-wrapper">
-         <img src="../../../assets/img/me.png">
+         <img [ngStyle]="{'opacity':switchService.darkTheme ? '0.85' : '1' }" src="../../../assets/img/me.png">
          <div class="about-title-wrapper">
-           <h1 data-aos="fade-up" data-aos-duration="1000" class="text-uppercase fst-italic">Dorian<br><span
-               class="mailhe">Mailhé</span></h1>
-           <figure data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" class="text-center">
+           <h1 [ngStyle]="{'color':themeService.darkColor}" data-aos="fade-up" data-aos-duration="1000" class="text-uppercase fst-italic">Dorian<br><span
+               class="mailhe" [ngStyle]="{'color':themeService.lightColor}">Mailhé</span></h1>
+           <figure [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" class="text-center">
              <blockquote class="blockquote">
                <p>Jeune étudiant motivé cherchant un stage de 4 mois dans le développement web aux Etats-Unis.</p>
              </blockquote>
@@ -16,15 +16,27 @@
            </figure>
          </div>
        </div>
+       <div class="switch-wrapper">
+        <label class="switch"><input type="checkbox" (input)="this.switch('THEME')"/>    
+          <div><i class="{{ switchService.themeIcon }}"></i></div>
+        </label>
+        <div [ngStyle]="{'background-color':themeService.darkColor}" class="vertical-divider"></div>
+        <label class="switch"><input type="checkbox" (input)="this.switch('LANG')"/>   
+          <div><img src="../../../assets/img/{{switchService.langIcon}}"></div>
+        </label>
+       </div>
      </div>
    </section>
 
 
 
-   <section id="skills">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
+   <section [ngStyle]="{'background-color':themeService.lightColor}" id="skills">
+     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
        <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#dddddd"></path>
      </svg>
+     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#131516"></path>
+    </svg>
      <div class="container skill-content">
        <div class="row">
          <div class="col-xl-5 pb-5 d-flex align-items-center">
@@ -68,26 +80,15 @@
    </section>
 
 
-   <section id="experience">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+   <section [ngStyle]="{'background-color':themeService.greyColor}" id="experience">
+     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
        <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#fff"></path>
+     </svg>
+     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#212529"></path>
      </svg>
      <div class="container experience-content">
        <div class="row">
-         <div class="col-xl-7">
-           <ul class="experiences-list">
-             <li *ngFor="let exp of experiences" data-aos="fade-up" data-aos-duration="1000" (click)="selectCard(exp)">
-               <img class="{{ exp.activated? 'activated-img' : '' }}" src="{{ exp.logo }}">
-               <div class="exp  {{ exp.activated? 'activated' : '' }}">
-                 <div class="exp-content">
-                   <h3 class="mt-3">{{ exp.company }}</h3>
-                   <p class="fst-italic fw-light color-secondary">{{ exp.duration }}</p>
-                   <p>{{ exp.shortdescription }}</p>
-                 </div>
-               </div>
-             </li>
-           </ul>
-         </div>
          <div class="col-xl-4 offset-xl-1 pb-5 d-flex align-items-center">
            <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
              <h2 class="text-uppercase fst-italic mb-3 mt-3">expérience</h2>
@@ -99,37 +100,54 @@
              </p>
            </div>
          </div>
+         <div class="col-xl-7 order-xl-first">
+          <ul [ngClass]="switchService.darkTheme ? 'bgulwhite' : 'bgulblack'" class="experiences-list">
+            <li *ngFor="let exp of experiences" data-aos="fade-up" data-aos-duration="1000" (click)="selectCard(exp)">
+              <img class="{{ exp.activated? 'activated-img' : '' }}" src="{{ exp.logo }}">
+              <div [ngStyle]="{'background-color':themeService.lightColor}" class="exp  {{ exp.activated? 'activated' : '' }}">
+                <div class="exp-content">
+                  <h3 class="mt-3">{{ exp.company }}</h3>
+                  <p class="fst-italic fw-light color-secondary">{{ exp.duration }}</p>
+                  <p>{{ exp.shortdescription }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
        </div>
      </div>
    </section>
 
 
 
-   <section id="education">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+   <section [ngStyle]="{'background-color':themeService.lightColor}" id="education">
+     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
        <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#dddddd"></path>
+     </svg>
+     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#131516"></path>
      </svg>
      <div class="container">
        <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">éducation</h2>
        <div class="row">
          <div class="col-md-6 d-flex justify-content-center">
-           <div class="education-block text-center center" data-aos="fade-right">
+           <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-right">
              <h5 class="text-muted">2018-2020</h5>
              <i class="bi bi-book-fill"></i>
              <h3 class="fw-bold">Lycée Pierre de Fermat</h3>
              <h4>Classe préparatoire</h4>
-             <div class="black-divider"></div>
+             <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
              <p>Après un bac S spécialité Mathématiques</p>
              <p>Physique Chimie (PC)</p>
            </div>
          </div>
          <div class="col-md-6  d-flex justify-content-center">
-           <div class="education-block text-center center" data-aos="fade-left">
+           <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-left">
              <h5 class="text-muted">2020-2023</h5>
              <i class="bi bi-cpu-fill"></i>
              <h3 class="fw-bold">CY Tech Pau (ex-EISTI)</h3>
              <h4>Ecole d'ingénieur</h4>
-             <div class="black-divider"></div>
+             <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
              <p>Spécalisée en informatique</p>
              <p class="font-italic">(en cours)</p>
            </div>
@@ -138,7 +156,7 @@
      </div>
    </section>
 
-   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+   <div id="toast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
        <div class="toast-header">
          <img src="../../../assets/img/me-toast.png" class="rounded me-2" alt="Dorian Mailhé">
@@ -152,55 +170,58 @@
      </div>
    </div>
 
-   <section id="portfolio">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+   <section [ngStyle]="{'background-color':themeService.greyColor}" id="portfolio">
+     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
        <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#fff"></path>
+     </svg>
+     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#212529"></path>
      </svg>
      <div class="container">
        <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">Portfolio</h2>
        <div class="row">
          <div class="col-md-4">
-           <div class="card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
              (click)="redirectTo('http://projetdemocratia.herokuapp.com/')">
              <div class="card-content">
-               <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top" alt="...">
+               <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
                  <h5 class="card-title fw-bold">Projet Democratia</h5>
                  <p class="card-text">Site de présentation de l'association Projet Democratia et son blog attitré.</p>
                </div>
-               <div class="card-link cache">
-                 <i class="bi bi-arrow-right"></i>
+               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
                </div>
              </div>
            </div>
          </div>
          <div class="col-md-4">
-           <div class="card second-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card second-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
            (click)="redirectTo('http://dodobwebsite.fr/audiodream')">
              <div class="card-content">
-               <img src="../../../assets/img/audiodream.png" class="card-img-top" alt="...">
+               <img src="../../../assets/img/audiodream.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
                  <h5 class="card-title fw-bold">AudioDream</h5>
                  <p class="card-text">Site e-commerce de projet d'étude (rendu non fonctionnel pour des raisons de
                    sécurité).</p>
                </div>
-               <div class="card-link cache">
-                 <i class="bi bi-arrow-right"></i>
+               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
                </div>
              </div>
            </div>
          </div>
          <div class="col-md-4">
-           <div class="card third-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card third-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
            (click)="redirectTo('http://dodobwebsite.fr/capitales')">
              <div class="card-content">
-              <img src="../../../assets/img/capitalgame.png" class="card-img-top" alt="...">
+              <img src="../../../assets/img/capitalgame.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
                 <h5 class="card-title fw-bold">Jeu des capitales</h5>
                 <p class="card-text">Application web pour apprendre les capitales sous forme de jeu.</p>
               </div>
-              <div class="card-link cache">
-                <i class="bi bi-arrow-right"></i>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
               </div>
              </div>
            </div>
@@ -208,46 +229,46 @@
        </div>
        <div class="row">
          <div class="col-md-4">
-           <div class="card fourth-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fourth-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
            (click)="redirectTo('https://www.i-rewood.com/')">
              <div class="card-content">
-               <img src="../../../assets/img/irewood.png" class="card-img-top" alt="...">
+               <img src="../../../assets/img/irewood.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
                  <h5 class="card-title fw-bold">I-Rewood</h5>
                  <p class="card-text">Site e-commerce de vente d'objets en bois de seconde main.</p>
                </div>
-               <div class="card-link cache">
-                 <i class="bi bi-arrow-right"></i>
+               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
                </div>
              </div>
            </div>
          </div>
          <div class="col-md-4">
-           <div class="card fifth-card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fifth-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
            (click)="redirectTo('http://paupyrus.eistibde.fr/')">
              <div class="card-content">
-              <img src="../../../assets/img/paupyrus.png" class="card-img-top" alt="...">
+              <img src="../../../assets/img/paupyrus.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
                 <h5 class="card-title fw-bold">Paupyrus</h5>
                 <p class="card-text">Site de campagne de la liste Paupyrus pour le BDE de CY Tech.</p>
               </div>
-              <div class="card-link cache">
-                <i class="bi bi-arrow-right"></i>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
               </div>
              </div>
            </div>
          </div>
          <div class="col-md-4">
-           <div class="card" data-aos="zoom-in" (mouseenter)="displayArrow($event)" (mouseleave)="hideArrow($event)"
+           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
            (click)="redirectTo('http://dodobwebsite.fr/')">
              <div class="card-content">
-               <img src="../../../assets/img/background.png" class="card-img-top" alt="...">
+               <img src="../../../assets/img/background.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
                  <h5 class="card-title fw-bold">Dodobwebsite</h5>
                  <p class="card-text">Site et blog personnel, qui contient toutes mes productions depuis 2015.</p>
                </div>
-               <div class="card-link cache">
-                 <i class="bi bi-arrow-right"></i>
+               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
                </div>
              </div>
            </div>
@@ -256,28 +277,31 @@
      </div>
    </section>
 
-   <section id="links">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+   <section [ngStyle]="{'background-color':themeService.lightColor}" id="links">
+     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
        <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#dddddd"></path>
      </svg>
+     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
+       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#131516"></path>
+     </svg>
      <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">liens utiles</h2>
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down" data-aos="zoom-in" data-aos-duration="1000">liens utiles</h2>
        <div class="row all-links">
-         <div class="col-md-4 d-flex justify-content-center">
-           <a href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated" src="../../../assets/img/linkedin.png"></a>
+         <div class="col-md-4 d-flex justify-content-center mb-5">
+           <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated" src="../../../assets/img/linkedin.png"></a>
          </div>
-         <div class="col-md-4  d-flex justify-content-center">
-          <a href="https://github.com/Dodoboulistick" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="bigger animated" src="../../../assets/img/github-logo.png"></a>
+         <div class="col-md-4  d-flex justify-content-center mb-5">
+          <a data-aos="zoom-in" data-aos-duration="1000" href="https://github.com/Dodoboulistick" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="bigger animated" src="../../../assets/img/github-logo.png"></a>
          </div>
-         <div class="col-md-4  d-flex justify-content-center">
-          <a href="http://dodobwebsite.fr" target="_blank"><img (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="rounded animated" src="../../../assets/img/favicon-dodobwebsite.png"></a>
+         <div class="col-md-4  d-flex justify-content-center mb-5">
+          <a data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" href="http://dodobwebsite.fr" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="rounded animated" src="../../../assets/img/favicon-dodobwebsite.png"></a>
         </div>
        </div>
      </div>
    </section>
 
-   <section id="contact">
-     <div class="container contact-card">
+   <section [ngStyle]="{'background-color':themeService.greyColor}" id="contact">
+     <div [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" class="container contact-card">
        <h2 class="text-uppercase text-center fst-italic mb-3">Contact</h2>
        <div class="row">
          <div class="col-lg-10 offset-lg-1">
@@ -317,8 +341,11 @@
                    <p><strong>* Ces informations sont requises.</strong></p>
                  </div>
                  <p class="form-success">{{ formService?.formSuccess }}</p>
-                 <div class="col-md-12">
+                 <div *ngIf="!switchService.darkTheme"  class="col-md-12">
                    <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto" value="Envoyer">
+                 </div>
+                 <div *ngIf="switchService.darkTheme"  class="col-md-12">
+                   <input type="submit" class="btn btn-lg btn-outline-light d-block m-auto" value="Envoyer">
                  </div>
                </div>
              </form>

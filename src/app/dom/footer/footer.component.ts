@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SwitchService } from 'src/app/services/switch.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
     selector: 'app-footer',
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
   })
 
 export class FooterComponent {
-    public constructor(){}
+    public constructor(public themeService: ThemeService, public switchService: SwitchService){}
 
     year: Date = new Date();
 }

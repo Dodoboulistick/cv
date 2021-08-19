@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SwitchService } from 'src/app/services/switch.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
     selector: 'app-navbar',
@@ -6,6 +8,11 @@ import { Component } from '@angular/core';
     styleUrls: ['../../app.component.css']
   })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
+  public constructor(public themeService: ThemeService, public switchService: SwitchService){
 
+  }
+  ngOnInit(): void {
+    this.themeService.initColors();
+  }
 }
