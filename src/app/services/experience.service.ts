@@ -13,7 +13,7 @@ export class ExperienceService {
         return date.getFullYear();
     }
 
-    myExperiences: any = [
+    myExperiencesFR: any = [
         {
             company: "TotalEnergies",
             duration: `2021`,
@@ -32,9 +32,7 @@ export class ExperienceService {
         {
             company: "Projet Democratia",
             duration: `2021`,
-            shortdescription: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aliquam quis elit nibh. Quisque pretium tortor ac ipsum ornare auctor. 
-            Pellentesque in consequat eros. Ut facilisis imperdiet mi, vel luctus ante porta ac`,
+            shortdescription: `Conception d'un site de présentation et blog pour l'association Projet Démocratia, le tout en équipe.`,
             longdescription: `Projet Democratia est une association d'étudiants de la France entière qui a pour but de réintéresser les
             jeunes aux enjeux politiques actuels, et ainsi lutter contre l'abstention grandissante.
             J'ai été ajouté au projet dans l'équipe de développeurs du site, d'abord pour regarder le code, puis pour pleinement y 
@@ -56,6 +54,54 @@ export class ExperienceService {
             Afin de m'officialiser, j'ai voulu acquérir le titre d'auto-entrepreneur à 16ans. Malheureusement, l'âge rend le côté administratif 
             très compliqué. J'ai donc attendu mes 20ans, après ma prépa, pour obtenir le titre de micro-entrepreneur.
             Je cherche donc des missions à exercer comme freelance en parallèle de mes années d'école d'ingénieur.
+            `,
+            logo: "/assets/img/freelance.png",
+            activated: false,
+            lang: "Full stack"
+        }
+    ];
+
+    myExperiencesEN: any = [
+        {
+            company: "TotalEnergies",
+            duration: `2021`,
+            shortdescription: `4-month internship at TotalEnergies. 
+            Development of geophysical tools with Angular, as well as a member space with Expressjs/Sequelize.`,
+            longdescription: `I was hired by the AVO club of Total to redesign some obsolete tools.
+            Indeed, the geophysicists of the team were using computer tools that facilitated their calculations.
+            Unfortunately, these tools were in Java and available on Internet Explorer, a browser that was left to its own devices.
+            The challenge was to give a new life to these programs in a more current language.
+            The internship went wonderfully well and taught me a lot, from a computer science and physics point of view.
+            It also reinforced my desire to continue in this direction.`,
+            logo: "/assets/img/total.png",
+            activated: true,
+            lang: "Angular, Material, ExpressJS, Sequelize, PostgreSQL"
+        },
+        {
+            company: "Projet Democratia",
+            duration: `2021`,
+            shortdescription: `Design of a presentation site and blog for the association Projet Democratia, all in team.`,
+            longdescription: `Projet Democratia is an association of students from all over France whose goal is to re-interest young people in current political issues, and thus fight against the growing abstention.
+            young people to current political issues, and thus fight against the growing abstention.
+            I was added to the project in the team of developers of the website, first to look at the code, then to fully 
+            to take part in it.
+            This is the project that taught me the most in terms of teamwork, with the use of tools such as Jira and Git.`,
+            logo: "/assets/img/projetdemocratia.png",
+            activated: false,
+            lang: "React, Bootstrap, ExpressJS, Sequelize"
+        },
+        {
+            company: "Freelance Web Developer",
+            duration: `2015-${this.getDate()}`,
+            shortdescription: `Followed numerous trainings to become a Full Stack web developer, notably via the Udemy and OpenClassroom platforms.
+            Strong personal dedication to the idea of evolving in this career.`,
+            longdescription: `If I was interested in computer science from a very early age, it's web development that I've chosen.
+            My first snippets of web sites go back to my 3rd grade internship, which I did at SII Sud-Ouest in Toulouse.
+            Many trainings and hours of work followed to improve myself. I quickly made websites for my relatives, 
+            often with CMS for reasons of professionalism, while cultivating my passion for web languages on the side.
+            In order to make myself official, I wanted to acquire the title of auto-entrepreneur at 16. Unfortunately, the age makes the administrative side 
+            very complicated. So I waited until I was 20, after my pre-preparation, to get the title of micro-entrepreneur.
+            I'm looking for freelance missions in parallel to my engineering school years.
             `,
             logo: "/assets/img/freelance.png",
             activated: false,

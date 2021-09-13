@@ -8,17 +8,17 @@
                class="mailhe" [ngStyle]="{'color':themeService.lightColor}">Mailhé</span></h1>
            <figure [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" class="text-center">
              <blockquote class="blockquote">
-               <p>Jeune étudiant motivé cherchant un stage de 4 mois dans le développement web aux Etats-Unis.</p>
+               <p>{{ 'aboutdescription' | translate }}</p>
              </blockquote>
              <figcaption class="blockquote-footer">
-               <cite title="Source Title">Avril-Août 2022</cite>
+               <cite title="Source Title">{{ 'aboutdate' | translate }}</cite>
              </figcaption>
            </figure>
          </div>
        </div>
        <div class="switch-wrapper">
         <label class="switch"><input type="checkbox" (input)="this.switch('THEME')"/>    
-          <div><i class="{{ switchService.themeIcon }}"></i></div>
+          <div><i style="color: #212529" class="{{ switchService.themeIcon }}"></i></div>
         </label>
         <div [ngStyle]="{'background-color':themeService.darkColor}" class="vertical-divider"></div>
         <label class="switch"><input type="checkbox" (input)="this.switch('LANG')"/>   
@@ -41,12 +41,8 @@
        <div class="row">
          <div class="col-xl-5 pb-5 d-flex align-items-center">
            <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
-             <h2 class="text-uppercase fst-italic mb-3 mt-3">compétences</h2>
-             <p>J'ai pour le développement web un grand intérêt depuis plusieurs années, que j'ai cultivé par de
-               nombreuses
-               formations en ligne (OpenClassroom, Udemy, apprendre-a-coder, etc). Maintenant étudiant en école
-               d'ingénieur
-               informatique, j'aimerais entrer dans le monde professionnel et ainsi faire de ma passion un métier.</p>
+             <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'skilltitle' | translate }}</h2>
+             <p>{{ 'skilldescription' | translate }}</p>
            </div>
          </div>
          <div class="col-xl-7">
@@ -91,12 +87,8 @@
        <div class="row">
          <div class="col-xl-4 offset-xl-1 pb-5 d-flex align-items-center">
            <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
-             <h2 class="text-uppercase fst-italic mb-3 mt-3">expérience</h2>
-             <p>{{ experienceDescription ? experienceDescription : "J'ai pour le développement web un grand intérêt depuis plusieurs années, que j'ai cultivé par de
-              nombreuses
-              formations en ligne (OpenClassroom, Udemy, apprendre-a-coder, etc). Maintenant étudiant en école
-              d'ingénieur
-              informatique, j'aimerais entrer dans le monde professionnel et ainsi faire de ma passion un métier." }}
+             <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'experiencetitle' | translate }}</h2>
+             <p>{{ experienceDescription ? experienceDescription : ('experiencedescription' | translate) }}
              </p>
            </div>
          </div>
@@ -128,47 +120,33 @@
        <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#131516"></path>
      </svg>
      <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">éducation</h2>
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">{{ 'educationtitle' | translate }}</h2>
        <div class="row">
          <div class="col-md-6 d-flex justify-content-center">
            <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-right">
              <h5 class="text-muted">2018-2020</h5>
              <i class="bi bi-book-fill"></i>
-             <h3 class="fw-bold">Lycée Pierre de Fermat</h3>
-             <h4>Classe préparatoire</h4>
+             <h3 class="fw-bold">{{ 'education1h3' | translate }}</h3>
+             <h4>{{ 'education1h4' | translate }}</h4>
              <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
-             <p>Après un bac S spécialité Mathématiques</p>
-             <p>Physique Chimie (PC)</p>
+             <p>{{ 'education1p1' | translate }}</p>
+             <p>{{ 'education1p2' | translate }}</p>
            </div>
          </div>
          <div class="col-md-6  d-flex justify-content-center">
            <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-left">
              <h5 class="text-muted">2020-2023</h5>
              <i class="bi bi-cpu-fill"></i>
-             <h3 class="fw-bold">CY Tech Pau (ex-EISTI)</h3>
-             <h4>Ecole d'ingénieur</h4>
+             <h3 class="fw-bold">{{ 'education2h3' | translate }}</h3>
+             <h4>{{ 'education2h4' | translate }}</h4>
              <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
-             <p>Spécalisée en informatique</p>
-             <p class="font-italic">(en cours)</p>
+             <p>{{ 'education2p1' | translate }}</p>
+             <p class="font-italic">{{ 'education2p2' | translate }}</p>
            </div>
          </div>
        </div>
      </div>
    </section>
-
-   <div id="toast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-       <div class="toast-header">
-         <img src="../../../assets/img/me-toast.png" class="rounded me-2" alt="Dorian Mailhé">
-         <strong class="me-auto">Dorian Mailhé</strong>
-         <small>A l'instant</small>
-         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-       </div>
-       <div class="toast-body">
-         Désolé, il n'y a aucune fonctionnalité au clic, je trouvais juste l'effet sympa !
-       </div>
-     </div>
-   </div>
 
    <section [ngStyle]="{'background-color':themeService.greyColor}" id="portfolio">
      <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
@@ -178,7 +156,7 @@
        <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#212529"></path>
      </svg>
      <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">Portfolio</h2>
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">{{ 'portfoliotitle' | translate }}</h2>
        <div class="row">
          <div class="col-md-4">
            <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
@@ -186,8 +164,8 @@
              <div class="card-content">
                <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
-                 <h5 class="card-title fw-bold">Projet Democratia</h5>
-                 <p class="card-text">Site de présentation de l'association Projet Democratia et son blog attitré.</p>
+                 <h5 class="card-title fw-bold">{{ 'portfolio1title' | translate }}</h5>
+                 <p class="card-text">{{ 'portfolio1description' | translate }}</p>
                </div>
                <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                  <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -201,9 +179,8 @@
              <div class="card-content">
                <img src="../../../assets/img/audiodream.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
-                 <h5 class="card-title fw-bold">AudioDream</h5>
-                 <p class="card-text">Site e-commerce de projet d'étude (rendu non fonctionnel pour des raisons de
-                   sécurité).</p>
+                 <h5 class="card-title fw-bold">{{ 'portfolio2title' | translate }}</h5>
+                 <p class="card-text">{{ 'portfolio2description' | translate }}</p>
                </div>
                <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                  <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -217,8 +194,8 @@
              <div class="card-content">
               <img src="../../../assets/img/capitalgame.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
-                <h5 class="card-title fw-bold">Jeu des capitales</h5>
-                <p class="card-text">Application web pour apprendre les capitales sous forme de jeu.</p>
+                <h5 class="card-title fw-bold">{{ 'portfolio3title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio3description' | translate }}</p>
               </div>
               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -234,8 +211,8 @@
              <div class="card-content">
                <img src="../../../assets/img/irewood.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
-                 <h5 class="card-title fw-bold">I-Rewood</h5>
-                 <p class="card-text">Site e-commerce de vente d'objets en bois de seconde main.</p>
+                 <h5 class="card-title fw-bold">{{ 'portfolio4title' | translate }}</h5>
+                 <p class="card-text">{{ 'portfolio4description' | translate }}</p>
                </div>
                <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                  <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -249,8 +226,8 @@
              <div class="card-content">
               <img src="../../../assets/img/paupyrus.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
-                <h5 class="card-title fw-bold">Paupyrus</h5>
-                <p class="card-text">Site de campagne de la liste Paupyrus pour le BDE de CY Tech.</p>
+                <h5 class="card-title fw-bold">{{ 'portfolio5title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio5description' | translate }}</p>
               </div>
               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -264,8 +241,8 @@
              <div class="card-content">
                <img src="../../../assets/img/background.png" class="card-img-top black-and-white" alt="...">
                <div class="card-body">
-                 <h5 class="card-title fw-bold">Dodobwebsite</h5>
-                 <p class="card-text">Site et blog personnel, qui contient toutes mes productions depuis 2015.</p>
+                 <h5 class="card-title fw-bold">{{ 'portfolio6title' | translate }}</h5>
+                 <p class="card-text">{{ 'portfolio6description' | translate }}</p>
                </div>
                <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
                  <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
@@ -285,7 +262,7 @@
        <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#131516"></path>
      </svg>
      <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down" data-aos="zoom-in" data-aos-duration="1000">liens utiles</h2>
+       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down" data-aos="zoom-in" data-aos-duration="1000">{{ 'linkstitle' | translate }}</h2>
        <div class="row all-links">
          <div class="col-md-4 d-flex justify-content-center mb-5">
            <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated" src="../../../assets/img/linkedin.png"></a>
@@ -302,50 +279,50 @@
 
    <section [ngStyle]="{'background-color':themeService.greyColor}" id="contact">
      <div [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" class="container contact-card">
-       <h2 class="text-uppercase text-center fst-italic mb-3">Contact</h2>
+       <h2 class="text-uppercase text-center fst-italic mb-3">{{ 'contacttitle' | translate }}</h2>
        <div class="row">
          <div class="col-lg-10 offset-lg-1">
            <div class="form-group">
              <form #contactForm="ngForm" (ngSubmit)="formService.onSubmit()" role="form">
                <div class="row">
                  <div class="col-md-6">
-                   <label for="firstname">Prénom *</label>
-                   <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Votre prénom"
+                   <label for="firstname">{{ 'firstname' | translate }} *</label>
+                   <input type="text" id="firstname" name="firstname" class="form-control" placeholder="{{ 'firstnamePlaceholder' | translate }}"
                      [(ngModel)]="formService.firstname">
-                   <p class="form-error">{{ formService?.firstnameError }}</p>
+                   <p *ngIf="formService?.firstnameError" class="form-error">{{ 'firstnameError' | translate }}</p>
                  </div>
                  <div class="col-md-6">
-                   <label for="name">Nom *</label>
-                   <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom"
+                   <label for="name">{{ 'lastname' | translate }} *</label>
+                   <input type="text" id="name" name="name" class="form-control" placeholder="{{ 'lastnamePlaceholder' | translate }}"
                      [(ngModel)]="formService.name">
-                   <p class="form-error">{{ formService?.nameError }}</p>
+                   <p *ngIf="formService?.nameError" class="form-error">{{ 'lastnameError' | translate }}</p>
                  </div>
                  <div class="col-md-6">
-                   <label for="email">Email *</label>
-                   <input type="email" id="email" name="email" class="form-control" placeholder="Votre email"
+                   <label for="email">{{ 'email' | translate }} *</label>
+                   <input type="email" id="email" name="email" class="form-control" placeholder="{{ 'emailPlaceholder' | translate }}"
                      [(ngModel)]="formService.email">
-                   <p class="form-error">{{ formService?.emailError }}</p>
+                   <p *ngIf="formService?.emailError" class="form-error">{{ 'emailError' | translate }}</p>
                  </div>
                  <div class="col-md-6">
-                   <label for="phone">Téléphone</label>
+                   <label for="phone">{{ 'phone' | translate }}</label>
                    <input type="tel" id="phone" name="phone" class="form-control"
-                     placeholder="Votre numéro de téléphone" [(ngModel)]="formService.phone">
+                     placeholder="{{ 'phonePlaceholder' | translate }}" [(ngModel)]="formService.phone">
                  </div>
                  <div class="col-md-12">
-                   <label for="message">Message *</label>
-                   <textarea type="text" id="message" name="message" class="form-control" placeholder="Votre message"
+                   <label for="message">{{ 'message' | translate }} *</label>
+                   <textarea type="text" id="message" name="message" class="form-control" placeholder="{{ 'messagePlaceholder' | translate }}"
                      rows="4" [(ngModel)]="formService.message"></textarea>
-                   <p class="form-error">{{ formService?.messageError }}</p>
+                   <p *ngIf="formService?.messageError" class="form-error">{{ 'messageError' | translate }}</p>
                  </div>
                  <div class="col-md-12">
-                   <p><strong>* Ces informations sont requises.</strong></p>
+                   <p><strong>* {{ 'required' | translate }}</strong></p>
                  </div>
-                 <p class="form-success">{{ formService?.formSuccess }}</p>
+                 <p *ngIf="formService?.formSuccess" class="form-success">{{ 'formsuccess' | translate }}</p>
                  <div *ngIf="!switchService.darkTheme"  class="col-md-12">
-                   <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto" value="Envoyer">
+                   <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto" value="{{ 'sendbutton' | translate }}">
                  </div>
                  <div *ngIf="switchService.darkTheme"  class="col-md-12">
-                   <input type="submit" class="btn btn-lg btn-outline-light d-block m-auto" value="Envoyer">
+                   <input type="submit" class="btn btn-lg btn-outline-light d-block m-auto" value="{{ 'sendbutton' | translate }}">
                  </div>
                </div>
              </form>

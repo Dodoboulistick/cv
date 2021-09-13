@@ -10,5 +10,6 @@ import { SwitchService } from '../services/switch.service';
 export class AppComponent {
   title = 'angular-cv';
 
-  public constructor(public themeService: ThemeService, public switchService: SwitchService){}
+  public constructor(public themeService: ThemeService, public switchService: SwitchService){
+  }
 }

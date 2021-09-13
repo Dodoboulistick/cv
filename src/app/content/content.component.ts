@@ -4,8 +4,8 @@ import { SkillsService } from '../services/skills.service';
 import { FormService } from '../services/form.service';
 import { SwitchService } from '../services/switch.service';
 import { ThemeService } from '../services/theme.service';
+import { TranslateService } from '@ngx-translate/core';
 declare let AOS: any;
-declare var $: any;
 
 
 @Component({
@@ -19,19 +19,19 @@ export class ContentComponent implements OnInit {
 
   title = 'angular-cv';
   skills: any = JSON.parse(JSON.stringify(this.skillsService.mySkills));
-  experiences: any = JSON.parse(JSON.stringify(this.experienceService.myExperiences));
+  experiences: any = JSON.parse(JSON.stringify(this.experienceService.myExperiencesFR));
   experienceDescription: string = "";
   themeCpt: number = 0;
   langCpt: number = 0;
 
-  public constructor(public skillsService: SkillsService, public themeService: ThemeService, public experienceService: ExperienceService, public formService: FormService, public switchService: SwitchService) {
+  public constructor(public translate: TranslateService, public skillsService: SkillsService, public themeService: ThemeService, public experienceService: ExperienceService, public formService: FormService, public switchService: SwitchService) {
+    translate.addLangs(['en', 'fr']);
+    translate.setDefaultLang('fr');
   }
 
   ngOnInit(): void {
     AOS.init();
-    $(".education-block").click(function () {
-      $('.toast').toast('show');
-    })
+    this.initateStorage();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -85,19 +85,31 @@ export class ContentComponent implements OnInit {
     event.target.classList.remove("headShake");
   }
 
-  public switch(type: string) {
-    switch (type) {
-      case "THEME":
-        this.themeCpt++;
-        this.switchService.switchTheme(this.themeCpt);
-        this.themeService.changeTheme(this.themeCpt);
-        break;
-      case "LANG":
-        this.langCpt++;
-        this.switchService.switchLang(this.langCpt);
-        break;
-      default:
-        break;
+  public switch(type: string, inital: boolean = false) {
+    if(inital){
+      this.switchService.switchTheme(this.themeCpt);
+      this.themeService.changeTheme(this.themeCpt);
+      this.switchService.switchLang(this.langCpt);
+      this.switchLang();
+    } else {
+      switch (type) {
+        case "THEME":
+          this.themeCpt++;
+          localStorage.removeItem('theme');
+          localStorage.setItem('theme', this.themeCpt.toString());
+          this.switchService.switchTheme(this.themeCpt);
+          this.themeService.changeTheme(this.themeCpt);
+          break;
+        case "LANG":
+          this.langCpt++;
+          localStorage.removeItem('lang');
+          localStorage.setItem('lang', this.langCpt.toString());
+          this.switchService.switchLang(this.langCpt);
+          this.switchLang();
+          break;
+        default:
+          break;
+      }
     }
   }
 
@@ -113,13 +125,27 @@ export class ContentComponent implements OnInit {
 
   public blackAndWhite(event: any){
     let element = event.target.childNodes[0].childNodes[0];
-    console.log(element);
     element.classList.add("colored");
   }
 
   public colored(event: any) {
     let element = event.target.childNodes[0].childNodes[0];
     element.classList.remove("colored");
+  }
+
+  public switchLang() {
+    (this.langCpt%2 == 0) ? (this.translate.use("fr"), this.experiences = JSON.parse(JSON.stringify(this.experienceService.myExperiencesFR))) : (this.translate.use("en"), this.experiences = JSON.parse(JSON.stringify(this.experienceService.myExperiencesEN)));
+    this.experienceDescription = "";
+  }
+
+  public initateStorage(){
+    let currentLang = localStorage.getItem('lang');
+    let currentTheme = localStorage.getItem('theme');
+    currentLang ? this.langCpt = Number(currentLang) : this.langCpt = 0;
+    currentTheme ? this.themeCpt = Number(currentTheme) : this.themeCpt = 0;
+    this.switch("THEME", true);
+    console.log(Number(currentTheme)%2 == 0)
+    this.switchService.darkTheme = Number(currentTheme)%2 != 0;
   }
 
 }

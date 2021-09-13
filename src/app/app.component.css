@@ -11,6 +11,7 @@ h2 {
 
 
 
+
 /*  NAVBAR  */
 nav{
   width: 100vw !important;
@@ -159,9 +160,10 @@ nav hr{
 
 #about .switch img{
   width: 28px;
+  height: 20px;
   position: relative;
-  top: 3px;
-  left: 5px;
+  top: 4px;
+  left: 6px;
 }
 
 #about .switch-wrapper{
@@ -361,6 +363,7 @@ nav hr{
   padding: 45px 30px;
   margin-bottom: 120px;
   position: relative;
+  max-width: 400px;
 }
 
 #education .education-block::before,
