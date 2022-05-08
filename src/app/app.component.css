@@ -9,6 +9,10 @@ h2 {
   line-height: 85px;
 }
 
+.text-justify{
+  text-justify: auto;
+}
+
 
 
 
@@ -245,7 +249,7 @@ nav hr{
   }
 
   #skills svg{
-    margin-top: -60px !important;
+    margin-top: -65px !important;
   }
 }
 

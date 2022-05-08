@@ -1,102 +1,111 @@
- <div class="main" (scroll)="reachSkills()" [ngStyle]="{'color':themeService.darkColor,'background-color':themeService.lightColor}">
-   <section [ngStyle]="{'background-color':themeService.greyColor}" class="mt-5" id="about">
-     <div class="container">
-       <div class="about-img-wrapper">
-         <img [ngStyle]="{'opacity':switchService.darkTheme ? '0.85' : '1' }" src="../../../assets/img/me.png">
-         <div class="about-title-wrapper">
-           <h1 [ngStyle]="{'color':themeService.darkColor}" data-aos="fade-up" data-aos-duration="1000" class="text-uppercase fst-italic">Dorian<br><span
-               class="mailhe" [ngStyle]="{'color':themeService.lightColor}">Mailhé</span></h1>
-           <figure [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500" class="text-center">
-             <blockquote class="blockquote">
-               <p>{{ 'aboutdescription' | translate }}</p>
-             </blockquote>
-             <figcaption class="blockquote-footer">
-               <cite title="Source Title">{{ 'aboutdate' | translate }}</cite>
-             </figcaption>
-           </figure>
-         </div>
-       </div>
-       <div class="switch-wrapper">
-        <label class="switch"><input type="checkbox" (input)="this.switch('THEME')"/>    
+<div class="main" (scroll)="reachSkills()"
+  [ngStyle]="{'color':themeService.darkColor,'background-color':themeService.lightColor}">
+  <section [ngStyle]="{'background-color':themeService.greyColor}" class="mt-5" id="about">
+    <div class="container">
+      <div class="about-img-wrapper">
+        <img [ngStyle]="{'opacity':switchService.darkTheme ? '0.85' : '1' }" src="../../../assets/img/me.png">
+        <div class="about-title-wrapper">
+          <h1 [ngStyle]="{'color':themeService.darkColor}" data-aos="fade-up" data-aos-duration="1000"
+            data-aos-offset="-500" class="text-uppercase fst-italic">Dorian<br><span class="mailhe"
+              [ngStyle]="{'color':themeService.lightColor}">Mailhé</span></h1>
+          <figure [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000"
+            data-aos-offset="-500" data-aos-delay="500" class="text-center">
+            <blockquote class="blockquote">
+              <p>{{ 'aboutdescription' | translate }}</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              <cite title="Source Title">{{ 'aboutdate' | translate }}</cite>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="switch-wrapper">
+        <label class="switch"><input type="checkbox" (input)="this.switch('THEME')" />
           <div><i style="color: #212529" class="{{ switchService.themeIcon }}"></i></div>
         </label>
         <div [ngStyle]="{'background-color':themeService.darkColor}" class="vertical-divider"></div>
-        <label class="switch"><input type="checkbox" (input)="this.switch('LANG')"/>   
+        <label class="switch"><input type="checkbox" (input)="this.switch('LANG')" />
           <div><img src="../../../assets/img/{{switchService.langIcon}}"></div>
         </label>
-       </div>
-     </div>
-   </section>
+      </div>
+    </div>
+  </section>
 
 
 
-   <section [ngStyle]="{'background-color':themeService.lightColor}" id="skills">
-     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#dddddd"></path>
-     </svg>
-     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110" class="MainPage-module--bottomTriangle--2iA_2">
+  <section [ngStyle]="{'background-color':themeService.lightColor}" id="skills">
+    <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#dddddd"></path>
+    </svg>
+    <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 110"
+      class="MainPage-module--bottomTriangle--2iA_2">
       <path d="M 0 0 L 1920 0 L 960 110 Z" fill="#131516"></path>
     </svg>
-     <div class="container skill-content">
-       <div class="row">
-         <div class="col-xl-5 pb-5 d-flex align-items-center">
-           <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
-             <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'skilltitle' | translate }}</h2>
-             <p>{{ 'skilldescription' | translate }}</p>
-           </div>
-         </div>
-         <div class="col-xl-7">
-           <div *ngFor="let skill of skills" class="row mb-5">
-             <div class="col-md-4 offset-1 d-flex align-items-center">
-               <div class="heading mb-4">
-                 <img src="{{ skill.title.img }}">
-                 <h3 class="align-middle ml-5 fw-bold">{{ skill.title.name }}</h3>
-               </div>
-             </div>
-             <div class="col-md-7" id="skill-progress-bars">
-               <ul>
-                 <li *ngFor="let s of skill.data">
-                   <div class="row d-flex justify-content-center">
-                     <div class="col-4">{{ s.lang }}</div>
-                     <div class="col-6 offset-1 mt-2">
-                       <div class="progress mt-1" style="height: 2px;">
-                         <div class="progress-bar" role="progressbar"
-                           [ngStyle]="{'width': s.skill, 'background-color': s.color}" aria-valuemin="0"
-                           aria-valuemax="100"></div>
-                       </div>
-                     </div>
-                   </div>
-                 </li>
-               </ul>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
+    <div class="container skill-content">
+      <div class="row">
+        <div class="col-xl-5 pb-5 d-flex align-items-center">
+          <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'skilltitle' | translate }}</h2>
+            <p>{{ 'skilldescription' | translate }}</p>
+          </div>
+        </div>
+        <div class="col-xl-7">
+          <div *ngFor="let skill of skills" class="row mb-5">
+            <div class="col-md-4 offset-1 d-flex align-items-center">
+              <div class="heading mb-4">
+                <img src="{{ skill.title.img }}">
+                <h3 class="align-middle ml-5 fw-bold">{{ skill.title.name }}</h3>
+              </div>
+            </div>
+            <div class="col-md-7" id="skill-progress-bars">
+              <ul>
+                <li *ngFor="let s of skill.data">
+                  <div class="row d-flex justify-content-center">
+                    <div class="col-4">{{ s.lang }}</div>
+                    <div class="col-6 offset-1 mt-2">
+                      <div class="progress mt-1" style="height: 2px;">
+                        <div class="progress-bar" role="progressbar"
+                          [ngStyle]="{'width': s.skill, 'background-color': s.color}" aria-valuemin="0"
+                          aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
-   <section [ngStyle]="{'background-color':themeService.greyColor}" id="experience">
-     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#fff"></path>
-     </svg>
-     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#212529"></path>
-     </svg>
-     <div class="container experience-content">
-       <div class="row">
-         <div class="col-xl-4 offset-xl-1 pb-5 d-flex align-items-center">
-           <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
-             <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'experiencetitle' | translate }}</h2>
-             <p>{{ experienceDescription ? experienceDescription : ('experiencedescription' | translate) }}
-             </p>
-           </div>
-         </div>
-         <div class="col-xl-7 order-xl-first">
+  <section [ngStyle]="{'background-color':themeService.greyColor}" id="experience">
+    <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#fff"></path>
+    </svg>
+    <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#212529"></path>
+    </svg>
+    <div class="container experience-content">
+      <div class="row">
+        <div class="col-xl-4 offset-xl-1 pb-5 d-flex align-items-center">
+          <div class="skill-writing" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="text-uppercase fst-italic mb-3 mt-3">{{ 'experiencetitle' | translate }}</h2>
+            <p class="text-justify">{{ experienceDescription ? experienceDescription : ('experiencedescription' |
+              translate) }}
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-7 order-xl-first">
           <ul [ngClass]="switchService.darkTheme ? 'bgulwhite' : 'bgulblack'" class="experiences-list">
             <li *ngFor="let exp of experiences" data-aos="fade-up" data-aos-duration="1000" (click)="selectCard(exp)">
               <img class="{{ exp.activated? 'activated-img' : '' }}" src="{{ exp.logo }}">
-              <div [ngStyle]="{'background-color':themeService.lightColor}" class="exp  {{ exp.activated? 'activated' : '' }}">
+              <div [ngStyle]="{'background-color':themeService.lightColor}"
+                class="exp  {{ exp.activated? 'activated' : '' }}">
                 <div class="exp-content">
                   <h3 class="mt-3">{{ exp.company }}</h3>
                   <p class="fst-italic fw-light color-secondary">{{ exp.duration }}</p>
@@ -106,231 +115,261 @@
             </li>
           </ul>
         </div>
-       </div>
-     </div>
-   </section>
+      </div>
+    </div>
+  </section>
 
 
 
-   <section [ngStyle]="{'background-color':themeService.lightColor}" id="education">
-     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#dddddd"></path>
-     </svg>
-     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#131516"></path>
-     </svg>
-     <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">{{ 'educationtitle' | translate }}</h2>
-       <div class="row">
-         <div class="col-md-6 d-flex justify-content-center">
-           <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-right">
-             <h5 class="text-muted">2018-2020</h5>
-             <i class="bi bi-book-fill"></i>
-             <h3 class="fw-bold">{{ 'education1h3' | translate }}</h3>
-             <h4>{{ 'education1h4' | translate }}</h4>
-             <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
-             <p>{{ 'education1p1' | translate }}</p>
-             <p>{{ 'education1p2' | translate }}</p>
-           </div>
-         </div>
-         <div class="col-md-6  d-flex justify-content-center">
-           <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }" class="education-block text-center center" data-aos="fade-left">
-             <h5 class="text-muted">2020-2023</h5>
-             <i class="bi bi-cpu-fill"></i>
-             <h3 class="fw-bold">{{ 'education2h3' | translate }}</h3>
-             <h4>{{ 'education2h4' | translate }}</h4>
-             <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
-             <p>{{ 'education2p1' | translate }}</p>
-             <p class="font-italic">{{ 'education2p2' | translate }}</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
+  <section [ngStyle]="{'background-color':themeService.lightColor}" id="education">
+    <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#dddddd"></path>
+    </svg>
+    <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 160"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 640 100 L 1280 0 L 1920 100 L 1920 0 Z" fill="#131516"></path>
+    </svg>
+    <div class="container">
+      <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down">{{ 'educationtitle' | translate }}
+      </h2>
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-center">
+          <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }"
+            class="education-block text-center center" data-aos="fade-right">
+            <h5 class="text-muted">2018-2020</h5>
+            <i class="bi bi-book-fill"></i>
+            <h3 class="fw-bold">{{ 'education1h3' | translate }}</h3>
+            <h4>{{ 'education1h4' | translate }}</h4>
+            <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
+            <p>{{ 'education1p1' | translate }}</p>
+            <p>{{ 'education1p2' | translate }}</p>
+          </div>
+        </div>
+        <div class="col-md-6  d-flex justify-content-center">
+          <div [ngStyle]="{'border':switchService.darkTheme ? '2px solid white' : 'none' }"
+            class="education-block text-center center" data-aos="fade-left">
+            <h5 class="text-muted">2020-2023</h5>
+            <i class="bi bi-cpu-fill"></i>
+            <h3 class="fw-bold">{{ 'education2h3' | translate }}</h3>
+            <h4>{{ 'education2h4' | translate }}</h4>
+            <div [ngStyle]="{'background-color':themeService.darkColor}" class="black-divider"></div>
+            <p>{{ 'education2p1' | translate }}</p>
+            <p class="font-italic">{{ 'education2p2' | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-   <section [ngStyle]="{'background-color':themeService.greyColor}" id="portfolio">
-     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#fff"></path>
-     </svg>
-     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#212529"></path>
-     </svg>
-     <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">{{ 'portfoliotitle' | translate }}</h2>
-       <div class="row">
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-             (click)="redirectTo('http://projetdemocratia.herokuapp.com/')">
-             <div class="card-content">
-               <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top black-and-white" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title fw-bold">{{ 'portfolio1title' | translate }}</h5>
-                 <p class="card-text">{{ 'portfolio1description' | translate }}</p>
-               </div>
-               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card second-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-           (click)="redirectTo('http://dodobwebsite.fr/audiodream')">
-             <div class="card-content">
-               <img src="../../../assets/img/audiodream.png" class="card-img-top black-and-white" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title fw-bold">{{ 'portfolio2title' | translate }}</h5>
-                 <p class="card-text">{{ 'portfolio2description' | translate }}</p>
-               </div>
-               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card third-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-           (click)="redirectTo('http://dodobwebsite.fr/capitales')">
-             <div class="card-content">
+  <section [ngStyle]="{'background-color':themeService.greyColor}" id="portfolio">
+    <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#fff"></path>
+    </svg>
+    <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#212529"></path>
+    </svg>
+    <div class="container">
+      <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="zoom-in">{{ 'portfoliotitle' | translate }}</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('https://projetdemocratia.fr/')">
+            <div class="card-content">
+              <img src="../../../assets/img/projetdemocratia-full.png" class="card-img-top black-and-white" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ 'portfolio1title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio1description' | translate }}</p>
+              </div>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card second-card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('http://dodobwebsite.fr/audiodream')">
+            <div class="card-content">
+              <img src="../../../assets/img/audiodream.png" class="card-img-top black-and-white" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ 'portfolio2title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio2description' | translate }}</p>
+              </div>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card third-card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('http://dodobwebsite.fr/capitales')">
+            <div class="card-content">
               <img src="../../../assets/img/capitalgame.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
                 <h5 class="card-title fw-bold">{{ 'portfolio3title' | translate }}</h5>
                 <p class="card-text">{{ 'portfolio3description' | translate }}</p>
               </div>
               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="row">
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fourth-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-           (click)="redirectTo('https://www.i-rewood.com/')">
-             <div class="card-content">
-               <img src="../../../assets/img/irewood.png" class="card-img-top black-and-white" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title fw-bold">{{ 'portfolio4title' | translate }}</h5>
-                 <p class="card-text">{{ 'portfolio4description' | translate }}</p>
-               </div>
-               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fifth-card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-           (click)="redirectTo('http://paupyrus.eistibde.fr/')">
-             <div class="card-content">
-              <img src="../../../assets/img/paupyrus.png" class="card-img-top black-and-white" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fourth-card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('https://nova-crete.com/ekkodesign/')">
+            <div class="card-content">
+              <img src="../../../assets/img/ekko-design.png" class="card-img-top black-and-white" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ 'portfolio4title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio4description' | translate }}</p>
+              </div>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card fifth-card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('https://dorian-mailhe.fr/datachallenge')">
+            <div class="card-content">
+              <img src="../../../assets/img/datachallenge.png" class="card-img-top black-and-white" alt="...">
               <div class="card-body">
                 <h5 class="card-title fw-bold">{{ 'portfolio5title' | translate }}</h5>
                 <p class="card-text">{{ 'portfolio5description' | translate }}</p>
               </div>
               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
               </div>
-             </div>
-           </div>
-         </div>
-         <div class="col-md-4">
-           <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in" (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
-           (click)="redirectTo('http://dodobwebsite.fr/')">
-             <div class="card-content">
-               <img src="../../../assets/img/background.png" class="card-img-top black-and-white" alt="...">
-               <div class="card-body">
-                 <h5 class="card-title fw-bold">{{ 'portfolio6title' | translate }}</h5>
-                 <p class="card-text">{{ 'portfolio6description' | translate }}</p>
-               </div>
-               <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
-                 <i [ngStyle]="{'color':themeService.lightColor}"class="bi bi-arrow-right"></i>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
-
-   <section [ngStyle]="{'background-color':themeService.lightColor}" id="links">
-     <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#dddddd"></path>
-     </svg>
-     <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180" class="MainPage-module--bottomTriangle--2iA_2">
-       <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#131516"></path>
-     </svg>
-     <div class="container">
-       <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down" data-aos="zoom-in" data-aos-duration="1000">{{ 'linkstitle' | translate }}</h2>
-       <div class="row all-links">
-         <div class="col-md-4 d-flex justify-content-center mb-5">
-           <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500" href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated" src="../../../assets/img/linkedin.png"></a>
-         </div>
-         <div class="col-md-4  d-flex justify-content-center mb-5">
-          <a data-aos="zoom-in" data-aos-duration="1000" href="https://github.com/Dodoboulistick" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="bigger animated" src="../../../assets/img/github-logo.png"></a>
-         </div>
-         <div class="col-md-4  d-flex justify-content-center mb-5">
-          <a data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" href="http://dodobwebsite.fr" target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }" (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="rounded animated" src="../../../assets/img/favicon-dodobwebsite.png"></a>
+            </div>
+          </div>
         </div>
-       </div>
-     </div>
-   </section>
+        <div class="col-md-4">
+          <div [ngStyle]="{'background-color':themeService.lightColor}" class="card" data-aos="zoom-in"
+            (mouseenter)="enterPortfolioCard($event)" (mouseleave)="leavePortfolioCard($event)"
+            (click)="redirectTo('http://dodobwebsite.fr/')">
+            <div class="card-content">
+              <img src="../../../assets/img/background.png" class="card-img-top black-and-white" alt="...">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">{{ 'portfolio6title' | translate }}</h5>
+                <p class="card-text">{{ 'portfolio6description' | translate }}</p>
+              </div>
+              <div [ngStyle]="{'background-color':themeService.darkColor}" class="card-link cache">
+                <i [ngStyle]="{'color':themeService.lightColor}" class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-   <section [ngStyle]="{'background-color':themeService.greyColor}" id="contact">
-     <div [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000" class="container contact-card">
-       <h2 class="text-uppercase text-center fst-italic mb-3">{{ 'contacttitle' | translate }}</h2>
-       <div class="row">
-         <div class="col-lg-10 offset-lg-1">
-           <div class="form-group">
-             <form #contactForm="ngForm" (ngSubmit)="formService.onSubmit()" role="form">
-               <div class="row">
-                 <div class="col-md-6">
-                   <label for="firstname">{{ 'firstname' | translate }} *</label>
-                   <input type="text" id="firstname" name="firstname" class="form-control" placeholder="{{ 'firstnamePlaceholder' | translate }}"
-                     [(ngModel)]="formService.firstname">
-                   <p *ngIf="formService?.firstnameError" class="form-error">{{ 'firstnameError' | translate }}</p>
-                 </div>
-                 <div class="col-md-6">
-                   <label for="name">{{ 'lastname' | translate }} *</label>
-                   <input type="text" id="name" name="name" class="form-control" placeholder="{{ 'lastnamePlaceholder' | translate }}"
-                     [(ngModel)]="formService.name">
-                   <p *ngIf="formService?.nameError" class="form-error">{{ 'lastnameError' | translate }}</p>
-                 </div>
-                 <div class="col-md-6">
-                   <label for="email">{{ 'email' | translate }} *</label>
-                   <input type="email" id="email" name="email" class="form-control" placeholder="{{ 'emailPlaceholder' | translate }}"
-                     [(ngModel)]="formService.email">
-                   <p *ngIf="formService?.emailError" class="form-error">{{ 'emailError' | translate }}</p>
-                 </div>
-                 <div class="col-md-6">
-                   <label for="phone">{{ 'phone' | translate }}</label>
-                   <input type="tel" id="phone" name="phone" class="form-control"
-                     placeholder="{{ 'phonePlaceholder' | translate }}" [(ngModel)]="formService.phone">
-                 </div>
-                 <div class="col-md-12">
-                   <label for="message">{{ 'message' | translate }} *</label>
-                   <textarea type="text" id="message" name="message" class="form-control" placeholder="{{ 'messagePlaceholder' | translate }}"
-                     rows="4" [(ngModel)]="formService.message"></textarea>
-                   <p *ngIf="formService?.messageError" class="form-error">{{ 'messageError' | translate }}</p>
-                 </div>
-                 <div class="col-md-12">
-                   <p><strong>* {{ 'required' | translate }}</strong></p>
-                 </div>
-                 <p *ngIf="formService?.formSuccess" class="form-success">{{ 'formsuccess' | translate }}</p>
-                 <div *ngIf="!switchService.darkTheme"  class="col-md-12">
-                   <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto" value="{{ 'sendbutton' | translate }}">
-                 </div>
-                 <div *ngIf="switchService.darkTheme"  class="col-md-12">
-                   <input type="submit" class="btn btn-lg btn-outline-light d-block m-auto" value="{{ 'sendbutton' | translate }}">
-                 </div>
-               </div>
-             </form>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
+  <section [ngStyle]="{'background-color':themeService.lightColor}" id="links">
+    <svg *ngIf="!switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#dddddd"></path>
+    </svg>
+    <svg *ngIf="switchService.darkTheme" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 180"
+      class="MainPage-module--bottomTriangle--2iA_2">
+      <path d="M 0 0 L 1920 0 L 1920 180 Z" fill="#131516"></path>
+    </svg>
+    <div class="container">
+      <h2 class="text-uppercase text-center fst-italic mb-3" data-aos="fade-down" data-aos="zoom-in"
+        data-aos-duration="1000">{{ 'linkstitle' | translate }}</h2>
+      <div class="row all-links">
+        <div class="col-md-4 d-flex justify-content-center mb-5">
+          <a data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500"
+            href="https://www.linkedin.com/in/dorian-mailhe/" target="_blank"><img
+              [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }"
+              (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="animated"
+              src="../../../assets/img/linkedin.png"></a>
+        </div>
+        <div class="col-md-4  d-flex justify-content-center mb-5">
+          <a data-aos="zoom-in" data-aos-duration="1000" href="https://github.com/Dodoboulistick" target="_blank"><img
+              [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }"
+              (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="bigger animated"
+              src="../../../assets/img/github-logo.png"></a>
+        </div>
+        <div class="col-md-4  d-flex justify-content-center mb-5">
+          <a data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500" href="http://dodobwebsite.fr"
+            target="_blank"><img [ngStyle]="{'filter':switchService.darkTheme ? 'invert(1)' : 'invert(0)' }"
+              (mouseenter)="animateLinks($event)" (mouseleave)="unanimateLinks($event)" class="rounded animated"
+              src="../../../assets/img/favicon-dodobwebsite.png"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section [ngStyle]="{'background-color':themeService.greyColor}" id="contact">
+    <div [ngStyle]="{'background-color':themeService.lightColor}" data-aos="zoom-in" data-aos-duration="1000"
+      class="container contact-card">
+      <h2 class="text-uppercase text-center fst-italic mb-3">{{ 'contacttitle' | translate }}</h2>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="form-group">
+            <form #contactForm="ngForm" (ngSubmit)="formService.onSubmit()" role="form">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="firstname">{{ 'firstname' | translate }} *</label>
+                  <input type="text" id="firstname" name="firstname" class="form-control"
+                    placeholder="{{ 'firstnamePlaceholder' | translate }}" [(ngModel)]="formService.firstname">
+                  <p *ngIf="formService?.firstnameError" class="form-error">{{ 'firstnameError' | translate }}</p>
+                </div>
+                <div class="col-md-6">
+                  <label for="name">{{ 'lastname' | translate }} *</label>
+                  <input type="text" id="name" name="name" class="form-control"
+                    placeholder="{{ 'lastnamePlaceholder' | translate }}" [(ngModel)]="formService.name">
+                  <p *ngIf="formService?.nameError" class="form-error">{{ 'lastnameError' | translate }}</p>
+                </div>
+                <div class="col-md-6">
+                  <label for="email">{{ 'email' | translate }} *</label>
+                  <input type="email" id="email" name="email" class="form-control"
+                    placeholder="{{ 'emailPlaceholder' | translate }}" [(ngModel)]="formService.email">
+                  <p *ngIf="formService?.emailError" class="form-error">{{ 'emailError' | translate }}</p>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone">{{ 'phone' | translate }}</label>
+                  <input type="tel" id="phone" name="phone" class="form-control"
+                    placeholder="{{ 'phonePlaceholder' | translate }}" [(ngModel)]="formService.phone">
+                </div>
+                <div class="col-md-12">
+                  <label for="message">{{ 'message' | translate }} *</label>
+                  <textarea type="text" id="message" name="message" class="form-control"
+                    placeholder="{{ 'messagePlaceholder' | translate }}" rows="4"
+                    [(ngModel)]="formService.message"></textarea>
+                  <p *ngIf="formService?.messageError" class="form-error">{{ 'messageError' | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p><strong>* {{ 'required' | translate }}</strong></p>
+                </div>
+                <p *ngIf="formService?.formSuccess" class="form-success">{{ 'formsuccess' | translate }}</p>
+                <div *ngIf="!switchService.darkTheme" class="col-md-12">
+                  <input type="submit" class="btn btn-lg btn-outline-dark d-block m-auto"
+                    value="{{ 'sendbutton' | translate }}">
+                </div>
+                <div *ngIf="switchService.darkTheme" class="col-md-12">
+                  <input type="submit" class="btn btn-lg btn-outline-light d-block m-auto"
+                    value="{{ 'sendbutton' | translate }}">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
- </div>
+</div>

@@ -8,7 +8,7 @@ import { SwitchService } from '../services/switch.service';
   styleUrls: ['../app.component.css']
 })
 export class AppComponent {
-  title = 'angular-cv';
+  title = 'Dorian Mailhé';
 
   public constructor(public themeService: ThemeService, public switchService: SwitchService){
   }

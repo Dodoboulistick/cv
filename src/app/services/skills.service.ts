@@ -23,7 +23,8 @@ export class SkillsService {
             [
               { lang: "Javascript", skill: "80%", color: "#f7e018" },
               { lang: "Angular", skill: "70%", color: "#f7e018" },
-              { lang: "React", skill: "50%", color: "#f7e018" },
+              { lang: "Vue", skill: "60%", color: "#f7e018" },
+              { lang: "React", skill: "40%", color: "#f7e018" },
               { lang: "jQuery", skill: "60%", color: "#f7e018" },
               { lang: "ExpressJS/Sequelize", skill: "65%", color: "#f7e018" }
             ]
