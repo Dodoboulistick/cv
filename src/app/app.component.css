@@ -181,7 +181,7 @@ nav hr{
   height: 50px;
   width: 1px;
   margin: 0 30px;
-  
+
 }
 
 @media (min-width: 1150px) {
@@ -350,6 +350,7 @@ nav hr{
 #experience .exp:hover {
   opacity: 1 !important;
   transition: 0.4s ease;
+  cursor: pointer;
 }
 
 #experience .activated-img {
@@ -512,15 +513,15 @@ nav hr{
   #portfolio .second-card {
     margin-top: 0;
   }
-  
+
   #portfolio .third-card {
     margin-top: 0;
   }
-  
+
   #portfolio .fourth-card {
     margin-top: 0;
   }
-  
+
   #portfolio .fifth-card {
     margin-top: 0;
   }
